@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card_pokemon {
+    @apply p-1 text-sm font-semibold text-white w-[80px] text-center rounded-md;
+  }
+}
