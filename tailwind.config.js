@@ -5,8 +5,11 @@ module.exports = {
     extend: {
       boxShadow: {
         'card-shadow': '1px 2px 5px #00000080',
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"]
       }
-    },
+    }
   },
   plugins: [],
 }
