@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     const getPokemonList = async () => {
       try {
-        const url = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12`);
+        const url = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=240`);
         const data = await url.json();
 
         setPokemons(data.results);
@@ -20,7 +20,7 @@ function App() {
   }, [])
 
   return (
-    <main className="p-5 grid grid-cols-6 font-inter font-medium">
+    <main className="main_style">
       {pokemons.map(poke => <PokeCard key={poke.name} data={poke}/>)}
     </main>
   );
