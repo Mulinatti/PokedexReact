@@ -8,17 +8,19 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
 
-  const getPokemonList = async (pagea) => {
+  const getPokemonList = async (pageIndex) => {
     try {
-      axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=${pagea}`)
-      .then(response => {
 
-        const pokemonPromises = response.data.results.map(res => {
-          return axios.get(res.url);
-        })
+      const endpoint = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=${pageIndex}`);
 
-        Promise.all(pokemonPromises).then(data => setPokemons(data));
+      const pokemonPromises = endpoint.data.results.map(res => {
+        return axios.get(res.url);
       })
+
+      const allPokemons = await axios.all(pokemonPromises)
+
+      setPokemons(allPokemons);
+
     } catch (erro) {
       console.error(erro);
     }
@@ -26,7 +28,7 @@ function App() {
 
   useEffect(() => {
     getPokemonList(page);
-  }, [])
+  }, [page])
 
   return (
     <main>
@@ -34,11 +36,11 @@ function App() {
         <div className="flex justify-between w-[100px]">
           <ButtonPage pagination={() => {
             setPage(page - 24);
-            getPokemonList(page - 24);
+            getPokemonList(page);
           }}><i className="fa-solid fa-chevron-left"></i></ButtonPage>
           <ButtonPage pagination={() => {
             setPage(page + 24);
-            getPokemonList(page + 24);
+            getPokemonList(page);
           }}><i className="fa-solid fa-chevron-right"></i></ButtonPage>
         </div>
       </header>
