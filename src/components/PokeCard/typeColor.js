@@ -1,5 +1,5 @@
 const typeColor = {
-  normal: "bg-neutral-300 text-black/70",
+  normal: "bg-neutral-300 text-black/80",
   fire: "bg-orange-400",
   water: "bg-blue-500",
   electric: "bg-yellow-500",
