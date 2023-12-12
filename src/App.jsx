@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PokeCard from "./components/PokeCard/PokeCard";
-import ButtonPage from "./components/ButtonPage/ButtonPage";
 import getPokemonPage from "./utils/getPokemonPage";
+import Header from "./components/Header/Header";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -19,24 +19,7 @@ function App() {
 
   return (
     <main>
-      <header className="flex justify-center p-2">
-        <div className="flex justify-between w-[100px]">
-          <ButtonPage
-            pagination={() => {
-              setPage(page - 24);
-            }}
-          >
-            <i className="fa-solid fa-chevron-left"></i>
-          </ButtonPage>
-          <ButtonPage
-            pagination={() => {
-              setPage(page + 24);
-            }}
-          >
-            <i className="fa-solid fa-chevron-right"></i>
-          </ButtonPage>
-        </div>
-      </header>
+      <Header page={page} getPage={(pageValue => setPage(pageValue))}/>
       <section className="main_style">
         {pokemons.map((poke) => (
           <PokeCard key={poke.data.name} data={poke.data} />

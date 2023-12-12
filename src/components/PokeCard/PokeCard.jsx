@@ -1,8 +1,6 @@
 import typeColor from './typeColor';
 
 const PokeCard = ({data}) => {
-
-	console.log(data)
 		
 	const pokemon = {
 		name: data.name,
