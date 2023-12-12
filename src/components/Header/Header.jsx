@@ -1,27 +1,33 @@
-import React from 'react'
-import ButtonPage from "../ButtonPage/ButtonPage"
+import React, { useEffect, useState } from "react";
+import getPokemonPage from "../../utils/getPokemonPage";
+import PokemonSearch from "../PokemonSearch/PokemonSearch";
 
-const Header = ({ page, getPage }) => {
+const Header = ({ getPokemons, filterValue }) => {
+
+  const [search, setSearch] = useState("");
+
+  const handlePokemonList = async () => {
+    const pokemonPageList = await getPokemonPage();
+    getPokemons(pokemonPageList);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearch(value);
+    filterValue(value);
+  };
+
+  useEffect(() => {
+    handlePokemonList();
+  }, []);
+
   return (
-    <header className="flex justify-center p-2">
-      <div className="flex justify-between w-[100px]">
-          <ButtonPage
-            pagination={() => {
-              getPage(page - 24);
-            }}
-          >
-            <i className="fa-solid fa-chevron-left"></i>
-          </ButtonPage>
-          <ButtonPage
-            pagination={() => {
-              getPage(page + 24);
-            }}
-          >
-            <i className="fa-solid fa-chevron-right"></i>
-          </ButtonPage>
-        </div>
+    <header className="flex flex-col items-center justify-center p-2">
+      <PokemonSearch
+        value={search}
+        insertValue={(value) => {handleSearchChange(value)}}
+      />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

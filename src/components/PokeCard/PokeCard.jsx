@@ -11,7 +11,7 @@ const PokeCard = ({data}) => {
 
 
   return (
-    <div className="cursor-pointer p-3 w-full hover:bg-black/10 shadow-card-shadow rounded-md hover:scale-[1.01] transition-all">
+    <div className="cursor-pointer h-[270px] p-3 w-full hover:bg-black/10 shadow-card-shadow rounded-md hover:scale-[1.01] transition-all">
 				<p className="capitalize text-black/80 text-center">{pokemon.name}</p>
         <div className="flex justify-center">
             <img className="w-[120px] h-[120px]" src={pokemon.sprite != null ? pokemon.sprite : "./images/noData.jpg"} alt="imagem_pokemon"/>

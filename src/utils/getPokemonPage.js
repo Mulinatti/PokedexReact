@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const getPokemonPage = async (pageIndex) => {
+const getPokemonPage = async () => {
+
   try {
     const endpoint = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?limit=24&offset=${pageIndex}`
+      `https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0`
     );
 
     const pokemonPromises = endpoint.data.results.map((res) => {

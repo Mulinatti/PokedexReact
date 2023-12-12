@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import PokeCard from "./components/PokeCard/PokeCard";
-import getPokemonPage from "./utils/getPokemonPage";
 import Header from "./components/Header/Header";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(0);
+  const [pokemonSearch, setPokemonSearch] = useState("");
 
-
-  const handlePokemonList =  async (page) => {
-    const pokemonPageList = await getPokemonPage(page);
-    setPokemons(pokemonPageList);
-  }
-
-  useEffect(() => {
-    handlePokemonList(page)
-  }, [page]);
+  const handleFilterChange = (value) => {
+    setPokemonSearch(value);
+  };
 
   return (
     <main>
-      <Header page={page} getPage={(pageValue => setPage(pageValue))}/>
+      <Header
+        filterValue={handleFilterChange}
+        getPokemons={(value) => setPokemons(value)}
+      />
       <section className="main_style">
-        {pokemons.map((poke) => (
-          <PokeCard key={poke.data.name} data={poke.data} />
-        ))}
+        {pokemons
+          .filter((poke) =>
+            poke.data.name.toLowerCase().includes(pokemonSearch.toLowerCase())
+          )
+          .map((poke) => (
+            <PokeCard key={poke.data.name} data={poke.data} />
+          ))}
       </section>
     </main>
   );
