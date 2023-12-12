@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getPokemonPage = async () => {
+const getAllPokemons = async () => {
 
   try {
     const endpoint = await axios.get(
@@ -19,4 +19,4 @@ const getPokemonPage = async () => {
   }
 };
 
-export default getPokemonPage;
+export default getAllPokemons;

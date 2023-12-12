@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import typeColor from "./typeColor";
 import { Link } from "react-router-dom";
 

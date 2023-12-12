@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import getPokemonPage from "../../utils/getPokemonPage";
+import getAllPokemons from "../../utils/getAllPokemons";
 import PokemonSearch from "../PokemonSearch/PokemonSearch";
 import Loading from "../Loading/Loading";
 
@@ -12,7 +12,7 @@ const Header = ({ getPokemons, filterValue }) => {
     try {
       setLoading(true)
        
-      const pokemonPageList = await getPokemonPage();
+      const pokemonPageList = await getAllPokemons();
       getPokemons(pokemonPageList);
 
     } catch(erro) {
