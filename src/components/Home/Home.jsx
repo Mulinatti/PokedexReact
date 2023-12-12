@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import PokeCard from "./components/PokeCard/PokeCard";
-import Header from "./components/Header/Header";
+import { useState } from "react";
+import PokeCard from "../PokeCard/PokeCard";
+import Header from "../Header/Header";
 
-function App() {
+const Home = () => {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonSearch, setPokemonSearch] = useState("");
 
@@ -29,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

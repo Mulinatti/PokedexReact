@@ -10,7 +10,7 @@ const PokemonSearch = ({ value, insertValue }) => {
       <input
         value={value}
         onChange={(e) => {
-          insertValue(e.target.value);
+          e.target.value !== " " && insertValue(e.target.value);
         }}
         className="outline-none rounded-r-lg border-y border-r border-black/50 p-2"
         type="text"
