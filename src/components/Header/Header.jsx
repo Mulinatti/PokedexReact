@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 import getPokemonPage from "../../utils/getPokemonPage";
 import PokemonSearch from "../PokemonSearch/PokemonSearch";
+import Loading from "../Loading/Loading";
 
 const Header = ({ getPokemons, filterValue }) => {
 
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true)
 
   const handlePokemonList = async () => {
-    const pokemonPageList = await getPokemonPage();
-    getPokemons(pokemonPageList);
+    try {
+      setLoading(true)
+       
+      const pokemonPageList = await getPokemonPage();
+      getPokemons(pokemonPageList);
+
+    } catch(erro) {
+      console.error(erro)
+    }
+    finally {
+      setLoading(false);
+    }
   };
 
   const handleSearchChange = (value) => {
@@ -26,6 +38,7 @@ const Header = ({ getPokemons, filterValue }) => {
         value={search}
         insertValue={(value) => {handleSearchChange(value)}}
       />
+      {loading ? <Loading/> : null}
     </header>
   );
 };
