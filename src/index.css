@@ -25,7 +25,7 @@ code {
     @apply p-5 gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 place-items-center font-inter font-medium;
   }
   hr {
-    @apply my-10 border-black/20;
+    @apply my-8 border-black/20;
   }
   * {
     @apply font-inter;

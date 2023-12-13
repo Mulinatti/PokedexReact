@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getPokemon from "../../utils/getPokemon";
 import PokemonType from "../PokemonType/PokemonType";
+import PokemonStats from "../PokemonComponents/PokemonStats/PokemonStats";
 
 const PokemonPage = () => {
   const pokemonParam = useParams();
 
-  const [pokemon, setPokemon] = useState({sprites: {}, types: []});
+  const [pokemon, setPokemon] = useState({stats: [], sprites: {}, types: []});
 
   const handlePokemon = async () => {
     const pokemonData = await getPokemon(pokemonParam.id)
@@ -19,7 +20,7 @@ const PokemonPage = () => {
   }, [])
 
   return (
-    <main className="p-5">
+    <main className="p-4">
       <h1 className="text-center text-4xl text-black/80 capitalize font-bold">{pokemon.name}</h1>
       <span className="text-center text-sm block">#{pokemon.id}</span>
       <div>
@@ -32,7 +33,10 @@ const PokemonPage = () => {
           </div>
         </section>
         <hr />
-        <section></section>
+        <section>
+          <h2 className="text-center font-bold text-lg">Stats</h2>
+          <PokemonStats stats={pokemon.stats}/>
+        </section>
       </div>
     </main>
   );
