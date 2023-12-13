@@ -3,9 +3,8 @@ import getAllPokemons from "../../utils/getAllPokemons";
 import PokemonSearch from "../PokemonSearch/PokemonSearch";
 import Loading from "../Loading/Loading";
 
-const Header = ({ getPokemons, filterValue }) => {
+const Header = ({ getPokemons, filterValue, pokemonSearch }) => {
 
-  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true)
 
   const handlePokemonList = async () => {
@@ -23,11 +22,6 @@ const Header = ({ getPokemons, filterValue }) => {
     }
   };
 
-  const handleSearchChange = (value) => {
-    setSearch(value);
-    filterValue(value);
-  };
-
   useEffect(() => {
     handlePokemonList();
   }, []);
@@ -35,8 +29,8 @@ const Header = ({ getPokemons, filterValue }) => {
   return (
     <header className="flex flex-col items-center justify-center p-2">
       <PokemonSearch
-        value={search}
-        insertValue={(value) => {handleSearchChange(value)}}
+        value={pokemonSearch}
+        insertValue={filterValue}
       />
       {loading ? <Loading/> : null}
     </header>

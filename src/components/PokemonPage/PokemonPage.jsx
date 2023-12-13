@@ -9,6 +9,7 @@ const PokemonPage = () => {
 
   const handlePokemon = async () => {
     const pokemonData = await getPokemon(pokemonParam.id)
+    console.log(pokemonData);
     setPokemon(pokemonData)
   }
 
@@ -18,7 +19,10 @@ const PokemonPage = () => {
 
   return (
     <main>
-      
+      <h1>{pokemon.name}</h1>
+      <section>
+
+      </section>
     </main>
   );
 };

@@ -6,20 +6,21 @@ const Home = () => {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonSearch, setPokemonSearch] = useState("");
 
-  const handleFilterChange = (value) => {
-    setPokemonSearch(value);
-  };
+  // const handleFilterChange = (value) => {
+  //   setPokemonSearch(value);
+  // };
 
   return (
     <main>
       <Header
-        filterValue={handleFilterChange}
+        filterValue={value => setPokemonSearch(value)}
         getPokemons={(value) => setPokemons(value)}
+        searchValue={pokemonSearch}
       />
       <section className="main_style">
         {pokemons
           .filter((poke) =>
-            poke.data.name.toLowerCase().includes(pokemonSearch.toLowerCase())
+            poke.data.name.includes(pokemonSearch.toLowerCase())
           )
           .map((poke) => (
             <PokeCard key={poke.data.name} data={poke.data} />
