@@ -6,16 +6,12 @@ const Home = () => {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonSearch, setPokemonSearch] = useState("");
 
-  // const handleFilterChange = (value) => {
-  //   setPokemonSearch(value);
-  // };
-
   return (
     <main>
       <Header
-        filterValue={value => setPokemonSearch(value)}
+        filterValue={(value) => setPokemonSearch(value)}
         getPokemons={(value) => setPokemons(value)}
-        searchValue={pokemonSearch}
+        search={pokemonSearch}
       />
       <section className="main_style">
         {pokemons
@@ -28,6 +24,6 @@ const Home = () => {
       </section>
     </main>
   );
-}
+};
 
 export default Home;

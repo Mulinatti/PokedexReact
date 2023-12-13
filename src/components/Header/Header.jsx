@@ -3,21 +3,18 @@ import getAllPokemons from "../../utils/getAllPokemons";
 import PokemonSearch from "../PokemonSearch/PokemonSearch";
 import Loading from "../Loading/Loading";
 
-const Header = ({ getPokemons, filterValue, pokemonSearch }) => {
-
-  const [loading, setLoading] = useState(true)
+const Header = ({ getPokemons, filterValue, search }) => {
+  const [loading, setLoading] = useState(true);
 
   const handlePokemonList = async () => {
     try {
-      setLoading(true)
-       
-      const pokemonPageList = await getAllPokemons();
-      getPokemons(pokemonPageList);
+      setLoading(true);
 
-    } catch(erro) {
-      console.error(erro)
-    }
-    finally {
+      const pokemonList = await getAllPokemons();
+      getPokemons(pokemonList);
+    } catch (erro) {
+      console.error(erro);
+    } finally {
       setLoading(false);
     }
   };
@@ -28,11 +25,8 @@ const Header = ({ getPokemons, filterValue, pokemonSearch }) => {
 
   return (
     <header className="flex flex-col items-center justify-center p-2">
-      <PokemonSearch
-        value={pokemonSearch}
-        insertValue={filterValue}
-      />
-      {loading ? <Loading/> : null}
+      <PokemonSearch value={search} insertValue={filterValue} />
+      {loading ? <Loading /> : null}
     </header>
   );
 };

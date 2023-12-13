@@ -1,4 +1,4 @@
-import typeColor from "./typeColor";
+import PokemonType from "../PokemonType/PokemonType"
 import { Link } from "react-router-dom";
 
 const PokeCard = ({ data }) => {
@@ -32,16 +32,7 @@ const PokeCard = ({ data }) => {
         </div>
         <div className="flex justify-center min-w-[170px]">
           <div className="flex justify-center w-full">
-            {pokemon.types.map((type) => (
-              <div
-                key={type.type.name}
-                className={`${
-                  typeColor[type.type.name]
-                } card_pokemon_type capitalize mx-1`}
-              >
-                {type.type.name}
-              </div>
-            ))}
+            <PokemonType types={pokemon.types}/>
           </div>
         </div>
       </div>
