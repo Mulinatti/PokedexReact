@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getPokemon from "../../utils/getPokemon";
-import PokemonType from "../PokemonType/PokemonType";
+import PokemonType from "../PokemonComponents/PokemonType/PokemonType";
 import PokemonStats from "../PokemonComponents/PokemonStats/PokemonStats";
 
 const PokemonPage = () => {

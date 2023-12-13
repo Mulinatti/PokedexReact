@@ -1,4 +1,4 @@
-import PokemonType from "../PokemonType/PokemonType"
+import PokemonType from "../PokemonComponents/PokemonType/PokemonType"
 import { Link } from "react-router-dom";
 
 const PokeCard = ({ data }) => {

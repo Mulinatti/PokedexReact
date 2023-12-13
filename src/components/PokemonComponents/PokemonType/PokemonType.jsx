@@ -1,5 +1,5 @@
 import React from "react";
-import typeColor from "../../utils/typeColor";
+import typeColor from "../../../utils/typeColor";
 import { useLocation } from "react-router-dom";
 
 const PokemonType = ({ types }) => {
