@@ -11,13 +11,26 @@ const PokemonInfo = ({ info }) => {
         </tr>
         <tr>
           <th>Abilities</th>
-          <td className="ability justify-start items-center">{info.abilities.map((ability, index) => (
-            <div className="flex text-sm p-1" key={ability.ability.url + Math.random()}>{index + 1} - {ability.ability.name}</div>
-          ))}</td>
+          <td className="ability justify-start items-center">
+            {info.abilities.map((ability, index) => (
+              <div
+                className="flex text-sm p-1"
+                key={ability.ability.url + Math.random()}
+              >
+                {index + 1} - {ability.ability.name}
+              </div>
+            ))}
+          </td>
         </tr>
         <tr>
           <th>Type</th>
-          <td><PokemonType left={true} typeStyle="p-0 w-full font-medium max-w-[92px]" types={info.types}/></td>
+          <td>
+            <PokemonType
+              left={true}
+              typeStyle="p-0 w-full font-medium max-w-[92px]"
+              types={info.types}
+            />
+          </td>
         </tr>
         <tr>
           <th>ID</th>
