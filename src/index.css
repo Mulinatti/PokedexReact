@@ -30,6 +30,24 @@ code {
   * {
     @apply font-inter;
   }
+  .headers {
+    @apply text-center text-lg mb-5 text-black/80 capitalize font-bold;
+  }
+  .info_table tr th {
+    @apply text-start;
+  }
+
+  .info_table td {
+    @apply font-medium;
+  } 
+
+  .info_table tr {
+    @apply h-10;
+  }
+  .info_table tr:not(:last-child) {
+    @apply border-b border-black/20
+  }
+
 }
 
 .leftRight {
