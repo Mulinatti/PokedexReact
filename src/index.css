@@ -34,11 +34,15 @@ code {
     @apply text-center text-lg mb-5 text-black/80 capitalize font-bold;
   }
   .info_table tr th {
-    @apply text-start;
+    @apply text-start w-[140px] md:w-auto;
   }
 
   .info_table td {
-    @apply font-medium;
+    @apply font-medium md:w-[80%];
+  } 
+
+  .info_table tr:nth-child(2) td {
+    @apply h-10;
   } 
 
   .info_table tr {
@@ -47,7 +51,6 @@ code {
   .info_table tr:not(:last-child) {
     @apply border-b border-black/20
   }
-
 }
 
 .leftRight {

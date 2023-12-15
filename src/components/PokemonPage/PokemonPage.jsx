@@ -4,11 +4,12 @@ import getPokemon from "../../utils/getPokemon";
 import PokemonType from "../PokemonComponents/PokemonType/PokemonType";
 import PokemonStats from "../PokemonComponents/PokemonStats/PokemonStats";
 import PokemonInfo from "../PokemonComponents/PokemonInfo/PokemonInfo";
+import PokemonMoves from "../PokemonComponents/PokemonMoves/PokemonMoves";
 
 const PokemonPage = () => {
   const pokemonParam = useParams();
 
-  const [pokemon, setPokemon] = useState({stats: [], sprites: {}, types: []});
+  const [pokemon, setPokemon] = useState({ moves: [], abilities: [{ability: {}}], stats: [], sprites: {}, types: []});
 
   const handlePokemon = async () => {
     const pokemonData = await getPokemon(pokemonParam.id)
@@ -42,6 +43,11 @@ const PokemonPage = () => {
         <section>
           <h2 className="headers">Pokémon Info</h2>
           <PokemonInfo info={pokemon}/>
+        </section>
+        <hr />
+        <section>
+          <h2 className="headers">Moves</h2>
+          <PokemonMoves moves={pokemon.moves}/>
         </section>
       </div>
     </main>
