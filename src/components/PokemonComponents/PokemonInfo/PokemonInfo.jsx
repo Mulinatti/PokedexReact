@@ -27,7 +27,7 @@ const PokemonInfo = ({ info }) => {
           <td>
             <PokemonType
               left={true}
-              typeStyle="p-0 w-full font-medium max-w-[92px]"
+              typeStyle="w-full font-medium max-w-[92px]"
               types={info.types}
             />
           </td>
