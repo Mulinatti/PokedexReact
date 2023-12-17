@@ -5,16 +5,23 @@ import PokemonType from "../PokemonComponents/PokemonType/PokemonType";
 import PokemonStats from "../PokemonComponents/PokemonStats/PokemonStats";
 import PokemonInfo from "../PokemonComponents/PokemonInfo/PokemonInfo";
 import PokemonMoves from "../PokemonComponents/PokemonMoves/PokemonMoves";
+import Loading from "../Loading/Loading";
 
 const PokemonPage = () => {
   const pokemonParam = useParams();
+  const [loading, setLoading] = useState(true);
 
   const [pokemon, setPokemon] = useState({ moves: [], abilities: [{ability: {}}], stats: [], sprites: {}, types: []});
 
   const handlePokemon = async () => {
-    const pokemonData = await getPokemon(pokemonParam.id)
-    console.log(pokemonData);
-    setPokemon(pokemonData)
+    try {
+      const pokemonData = await getPokemon(pokemonParam.id)
+      console.log(pokemonData);
+      setPokemon(pokemonData)
+    }
+    finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -22,7 +29,7 @@ const PokemonPage = () => {
   }, [])
 
   return (
-    <main className="p-4">
+    loading ? <Loading/> : <main className="p-4">
       <h1 className="text-4xl headers mb-0 capitalize">{pokemon.name}</h1>
       <span className="text-center text-sm block">#{pokemon.id}</span>
       <div>
@@ -41,7 +48,7 @@ const PokemonPage = () => {
         </section>
         <hr />
         <section>
-          <h2 className="headers">Pokémon Info</h2>
+          <h2 className="headers">Pokémon Data</h2>
           <PokemonInfo info={pokemon}/>
         </section>
         <hr />
