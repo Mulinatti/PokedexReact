@@ -25,13 +25,13 @@ code {
     @apply p-5 gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 place-items-center font-inter font-medium;
   }
   hr {
-    @apply my-8 border-black/20;
+    @apply my-8 border-black/20 md:hidden;
   }
   * {
     @apply font-inter;
   }
   .headers {
-    @apply text-center text-lg mb-5 text-black/80 capitalize font-bold;
+    @apply text-center text-lg mb-5 md:text-xl text-black/80 capitalize font-bold;
   }
   .info_table tr th {
     @apply text-start w-[140px] md:w-auto;
@@ -50,6 +50,14 @@ code {
   }
   .info_table tr:not(:last-child) {
     @apply border-b border-black/20
+  }
+
+  .moves_table tr:not(:last-child) {
+    @apply border-b border-black/20
+  }
+
+  .moves_table tr {
+    @apply h-10;
   }
 }
 

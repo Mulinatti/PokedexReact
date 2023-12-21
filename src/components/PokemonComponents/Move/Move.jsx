@@ -1,11 +1,8 @@
 import React from "react";
 import PokemonType from "../PokemonType/PokemonType";
-import typeColor from "../../../utils/typeColor";
 import { GoDash } from "react-icons/go";
 
 const Move = ({ move }) => {
-
-  console.log(move);
 
   return (
     <tr className="capitalize">

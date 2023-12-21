@@ -9,7 +9,7 @@ const PokemonStats = ({ stats }) => {
       <table className="w-full">
         <tbody>
           {stats.map(stat => (
-            <tr className="text-sm text-black/70 font-medium" key={stat.stat.name}>
+            <tr className="text-sm md:text-base text-black/70 font-medium" key={stat.stat.name}>
               <th className="capitalize text-end pr-2">{pokemonStatusName(stat.stat.name)}</th>
               <td className="w-full">
                 <div 

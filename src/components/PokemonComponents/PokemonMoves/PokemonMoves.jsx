@@ -25,38 +25,28 @@ const PokemonMoves = ({ moves }) => {
 
   const [genMove, setGenMove] = useState("generation-i");
 
-  const generations = [
-    "generation-i",
-    "generation-ii",
-    "generation-iii",
-    "generation-iv",
-    "generation-v",
-    "generation-vi",
-    "generation-vii",
-    "generation-viii",
-  ]
-
   return (
-    loading ? <Loading/> : <div className="max-w-full overflow-scroll overflow-y-hidden">
-      <PokemonGen gens={generations} changeGen={(value) => setGenMove(value)}/>
-      <table className="text-center w-full border-spacing-3 border-separate">
-        <thead>
-          <tr>
-            <th className="text-left">Name</th>
-            <th>Type</th>
-            <th>Power</th>
-            <th>Accuracy</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pokemonMoves
-          .filter(move => move.generation.name === genMove)
-          .map(move => (
-            <Move key={move.id + Math.random()} move={move} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    loading ? <Loading/> :
+    <div className="flex flex-col items-center">
+      <div className="w-full md:w-4/5 overflow-scroll overflow-y-hidden">
+        <table className="moves_table text-center md:text-lg w-full">
+          <thead>
+            <tr>
+              <th className="text-left">Name</th>
+              <th>Type</th>
+              <th>Power</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pokemonMoves
+            .map(move => (
+              <Move key={move.id} move={move} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div> 
   );
 };
 

@@ -4,7 +4,7 @@ import PokemonType from "../PokemonType/PokemonType";
 const PokemonInfo = ({ info }) => {
   return (
     <table className="w-full">
-      <tbody className="info_table capitalize text-black/70">
+      <tbody className="info_table capitalize text-black/70 md:text-lg">
         <tr>
           <th>Name</th>
           <td>{info.name}</td>
@@ -14,7 +14,7 @@ const PokemonInfo = ({ info }) => {
           <td className="ability justify-start items-center">
             {info.abilities.map((ability, index) => (
               <div
-                className="flex text-sm p-1"
+                className="flex text-sm md:text-base p-1"
                 key={ability.ability.url + Math.random()}
               >
                 {index + 1} - {ability.ability.name}

@@ -4,7 +4,7 @@ const getPokemonMoves = async (moves) => {
   try {
     const movesUrl = moves.map(move => {
       return axios.get(move.move.url)
-    }) 
+    })
 
     const allPokemonMoves = await axios.all(movesUrl);
 
