@@ -13,7 +13,7 @@ const PokemonStats = ({ stats }) => {
               <th className="capitalize text-end pr-2">{pokemonStatusName(stat.stat.name)}</th>
               <td className="w-full">
                 <div 
-                  style={{width: `${(stat.base_stat * 100) / 180}%`}} 
+                  style={{width: `${(stat.base_stat * 100) / 255}%`}} 
                   className={`border rounded-[5px] h-[13px]
                   ${pokemonStatusColor(stat.base_stat)}`}
                 ></div>

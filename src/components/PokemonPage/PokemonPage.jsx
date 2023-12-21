@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import getPokemon from "../../utils/getPokemon";
 import PokemonType from "../PokemonComponents/PokemonType/PokemonType";
 import PokemonStats from "../PokemonComponents/PokemonStats/PokemonStats";
 import PokemonInfo from "../PokemonComponents/PokemonInfo/PokemonInfo";
 import PokemonMoves from "../PokemonComponents/PokemonMoves/PokemonMoves";
 import Loading from "../Loading/Loading";
+import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
 const PokemonPage = () => {
-  const pokemonParam = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState({
     moves: [],
@@ -21,7 +25,7 @@ const PokemonPage = () => {
 
   const handlePokemon = async () => {
     try {
-      const pokemonData = await getPokemon(pokemonParam.id);
+      const pokemonData = await getPokemon(id.toLowerCase());
       console.log(pokemonData);
       setPokemon(pokemonData);
     } finally {
@@ -31,12 +35,16 @@ const PokemonPage = () => {
 
   useEffect(() => {
     handlePokemon();
-  }, []);
+  }, [location.key]);
 
   return loading ? (
     <Loading />
   ) : (
     <main className="p-4">
+      <div className="flex font-medium justify-between md:text-lg mb-4 md:mb-0 sm:justify-center">
+        <button onClick={() => navigate(`/pokemon/${parseInt(isNaN(id) ? pokemon.id : id) - 1}`, {replace: true})} className="mr-2 flex items-center leading-3 hover:text-black/70 transition-colors"><FaCircleChevronLeft className="mr-2"/>Previous</button>
+        <button onClick={() => navigate(`/pokemon/${parseInt(isNaN(id) ? pokemon.id : id) + 1}`, {replace: true})} className="ml-2 flex items-center leading-3 hover:text-black/70 transition-colors">Next<FaCircleChevronRight className="ml-2"/></button>
+      </div>
       <div className="md:grid md:grid-cols-2 grid-cols-1 gap-y-12">
         <section className="flex flex-col items-center">
           <div>
