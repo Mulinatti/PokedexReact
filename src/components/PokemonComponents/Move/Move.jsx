@@ -15,10 +15,10 @@ const Move = ({ move }) => {
           types={[move.type]}
         />
       </td>
-      <td>
+      <td className="min-w-[100px]">
         {move.power ? move.power : <GoDash style={{ margin: "0 auto" }} />}
       </td>
-      <td>
+      <td className="min-w-[100px]">
         {move.accuracy ? (
           move.accuracy
         ) : (

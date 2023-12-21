@@ -40,7 +40,7 @@ const PokemonPage = () => {
   return loading ? (
     <Loading />
   ) : (
-    <main className="p-4">
+    <main className="p-4 max-w-[1366px] m-auto">
       <div className="flex font-medium justify-between md:text-lg mb-4 md:mb-0 sm:justify-center">
         <button onClick={() => navigate(`/pokemon/${parseInt(isNaN(id) ? pokemon.id : id) - 1}`, {replace: true})} className="mr-2 flex items-center leading-3 hover:text-black/70 transition-colors"><FaCircleChevronLeft className="mr-2"/>Previous</button>
         <button onClick={() => navigate(`/pokemon/${parseInt(isNaN(id) ? pokemon.id : id) + 1}`, {replace: true})} className="ml-2 flex items-center leading-3 hover:text-black/70 transition-colors">Next<FaCircleChevronRight className="ml-2"/></button>
